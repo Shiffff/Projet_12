@@ -1,12 +1,12 @@
 import React from "react";
 import Title from "./Title/Title";
-import ChartContent from "./ChartContent/ChartContent";
+import ContentComponents from "./ContentComponents/ContentComponents";
 
 const ProfilPageContent = () => {
   return (
     <div className="profilPageContent">
       <Title />
-      <ChartContent />
+      <ContentComponents />
     </div>
   );
 };

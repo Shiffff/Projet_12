@@ -1,0 +1,23 @@
+
+.statsPage  {
+    height: 100%;
+}
+
+.statsPage li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 258px;
+    height: 124px;
+    background-color: #FBFBFB;
+    border-radius: 5px;
+    gap: 20px;
+}
+
+.statsPage ul {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
