@@ -1,4 +1,27 @@
 .linechartContainer{
+    display: flex;
+    align-items: flex-end;
     width: 33%;
-    background-color: #FBFBFB;
+    background-color: #FF0000;
+    position: relative;
+    padding-bottom: 35px;
+}
+
+.darkRedBg{
+    height: 100%;
+    width: 30%;
+    position: absolute;
+    background-color: #000000;
+    opacity: 0.1;
+    right: 0;
+    bottom: 0;
+
+}
+.linechartTitle{
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    opacity: 0.5;
+    font-size: 20px;
 }
