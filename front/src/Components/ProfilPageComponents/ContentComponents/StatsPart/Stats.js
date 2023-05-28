@@ -23,31 +23,35 @@ const Stats = () => {
           <li>
             <img src="../calories.svg" alt="calories Logo"></img>
             <div className="statsContent">
-              <p>{userStats.data.keyData.calorieCount}kCal</p>
-              <p>Calories</p>
+              <p className="dataText">
+                {userStats.data.keyData.calorieCount}kCal
+              </p>
+              <p className="unitText">Calories</p>
             </div>
           </li>
           <li>
             <img src="../proteines.svg" alt="proteines Logo"></img>
             <div className="statsContent">
-              <p>{userStats.data.keyData.proteinCount}g</p>
-              <p>Proteines</p>
+              <p className="dataText">{userStats.data.keyData.proteinCount}g</p>
+              <p className="unitText">Proteines</p>
             </div>
           </li>
 
           <li>
             <img src="../glucides.svg" alt="glucides"></img>
             <div className="statsContent">
-              <p>{userStats.data.keyData.carbohydrateCount}g</p>
-              <p>Glucides</p>
+              <p className="dataText">
+                {userStats.data.keyData.carbohydrateCount}g
+              </p>
+              <p className="unitText">Glucides</p>
             </div>
           </li>
 
           <li>
             <img src="../lipides.svg" alt="lipidesLogo"></img>
             <div className="statsContent">
-              <p>{userStats.data.keyData.lipidCount}g</p>
-              <p>Lipides</p>
+              <p className="dataText">{userStats.data.keyData.lipidCount}g</p>
+              <p className="unitText">Lipides</p>
             </div>
           </li>
         </ul>

@@ -14,10 +14,35 @@
     position: absolute;
     top: 40px;
     left: 0;
-    margin-left: 40px;
+    margin-left: 20px;
     width: 95%;
     justify-content: space-between;
 }
+.dayActivity{
+    font-weight: 600;
+}
+.legendChartBar{
+    display: flex;
+    color: gray;
+    font-weight: 600;
 
+}
+.legendChartBar p {
+    margin-left: 10px;
+}
 
+.iconChartRed{
+    margin-left: 30px;
+}
+.custom-tooltip{
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100px;
+    width: 60px;
+    color: white;
+    font-size: 12px;
 
+}

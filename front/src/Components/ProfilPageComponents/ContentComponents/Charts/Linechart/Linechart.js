@@ -12,6 +12,7 @@ const Linechart = () => {
     async function fetchData() {
       const data = await Caller.userAverage("12");
       const newData = Formater.lineChartFormat(data.data.sessions);
+
       setUserAverage(newData);
       setisLoading(true);
     }
@@ -19,6 +20,16 @@ const Linechart = () => {
     fetchData();
   }, []);
   console.log(userAverage);
+
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="custom-tooltip-lineChart">
+          <p className="label">{`${payload[0].value} min`}</p>
+        </div>
+      );
+    }
+  };
 
   return (
     <div className="linechartContainer">
@@ -35,7 +46,7 @@ const Linechart = () => {
               tick={{ fill: "#FFFFFF", opacity: "0.5" }}
             />
 
-            <Tooltip />
+            <Tooltip content={<CustomTooltip />} />
             <Line
               type="monotone"
               dataKey="sessionLength"

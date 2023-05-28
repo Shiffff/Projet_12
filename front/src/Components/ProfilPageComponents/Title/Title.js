@@ -20,7 +20,12 @@ const Title = () => {
     <div>
       {isLoading ? (
         <div>
-          <h2>Bonjour {userStats.data.userInfos.firstName}</h2>
+          <h2>
+            Bonjour{" "}
+            <span className="firstNameTitle">
+              {userStats.data.userInfos.firstName}
+            </span>
+          </h2>
           <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
         </div>
       ) : (

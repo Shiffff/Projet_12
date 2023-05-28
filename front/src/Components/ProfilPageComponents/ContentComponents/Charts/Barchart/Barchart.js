@@ -22,26 +22,40 @@ const Barchart = () => {
       const stats = await Caller.userActivity("12");
       const data = Formater.barChartFormat(stats.data.sessions);
       setUserActivity(data);
+      console.log(userActivity);
       setisLoading(true);
     }
 
     fetchData();
   }, []);
 
+  const CustomTooltip = ({ active, payload, label }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="custom-tooltip">
+          <p className="label">{`${payload[0].value}kg`}</p>
+          <p className="intro">{`${payload[1].value}Kcal`}</p>
+        </div>
+      );
+    }
+  };
+
   return (
     <div className="barchart">
       <div className="title">
-        <p>Activité quotidienne</p>
-        <div>
+        <p className="dayActivity">Activité quotidienne</p>
+        <div className="legendChartBar">
           <img src="iconChartBlack.svg"></img>
-          Poids (kg)
-          <img src="iconChartRed.svg"></img>
-          Calories brûlées (kCal)
+          <p>Poids (kg)</p>
+          <img className="iconChartRed" src="iconChartRed.svg"></img>
+          <p>Calories brûlées (kCal)</p>
         </div>
       </div>
       {isLoading ? (
         <ResponsiveContainer width="100%" height="60%">
           <BarChart data={userActivity}>
+            <Tooltip content={<CustomTooltip />} />
+
             <CartesianGrid
               strokeDasharray="2"
               horizontal={true}

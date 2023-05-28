@@ -28,7 +28,7 @@ const Radarchart = () => {
 
   return (
     <div className="radarchart">
-      <ResponsiveContainer>
+      <ResponsiveContainer width="100%" height="90%">
         <RadarChart data={userAverage}>
           <PolarGrid gridType="polygon" radialLines={false} />
           <PolarAngleAxis

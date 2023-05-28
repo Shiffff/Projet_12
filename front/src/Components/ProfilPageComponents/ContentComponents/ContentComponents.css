@@ -1,8 +1,12 @@
 .ContentComponentsPage{
     display: flex;
-    margin-top: 100px ;
-    height: 800px;
+    margin-top: 30px ;
+
 }
+@media (max-width: 1400px) {
+    .ContentComponentsPage {
+      flex-direction: column-reverse;
+    }}
 
 .ContentComponentsLeftPart{
     width: 70%;
@@ -11,18 +15,37 @@
     justify-content: space-between;
 
 }
-
+@media (max-width: 1400px) {
+    .ContentComponentsLeftPart {
+      width: 100%;
+    }}
 
 
 .topPart{
-    height: 45%;
+    height: 400px;
+    margin-bottom: 40px;
+    border-radius: 7px;
 
 }
+@media (max-width: 1400px) {
+    .topPart {
+      margin-right: 20px;
+    }}
+
+
 .bottomPart{
-    height: 45%;
     display: flex;
-    gap: 50px;
+    gap: 20px;
+    height: 300px;
+    margin-right: 20px; 
 }
-.ContentComponentsRight{
-    margin-left: 50px;
+@media (max-width: 1400px) {
+    .bottomPart {
+      margin-right: 0px;
+    }}
+
+
+.recharts-wrapper{
+    display: flex;
+    align-items: center;
 }
