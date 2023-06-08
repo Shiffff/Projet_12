@@ -1,13 +1,18 @@
 import React from "react";
 import "./menu.css";
+import { Link } from "react-router-dom";
 
 const Menu = () => {
   return (
     <div className="menuComponents">
       <div className="menuTop">
         <ul>
-          <img src="../logo.svg" alt="logo"></img>
-          <li>Accueil</li>
+          <Link to={`/`}>
+            <img src="../logo.svg" alt="logo"></img>
+          </Link>
+          <Link to={`/`}>
+            <li>Accueil</li>
+          </Link>
           <li>Profil</li>
           <li>Réglage</li>
           <li>Communauté</li>

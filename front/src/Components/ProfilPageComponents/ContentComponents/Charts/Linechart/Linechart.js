@@ -3,23 +3,28 @@ import "./linechart.css";
 import Caller from "../../../../../Utils/caller";
 import Formater from "../../../../../Utils/formatData";
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Linechart = () => {
   const [userAverage, setUserAverage] = useState("");
   const [isLoading, setisLoading] = useState(false);
+  const navigate = useNavigate();
+  let { id } = useParams();
 
   useEffect(() => {
     async function fetchData() {
-      const data = await Caller.userAverage("12");
-      const newData = Formater.lineChartFormat(data.data.sessions);
-
-      setUserAverage(newData);
-      setisLoading(true);
+      const data = await Caller.userAverage(id);
+      if (typeof data === "object") {
+        const newData = Formater.lineChartFormat(data.data.sessions);
+        setUserAverage(newData);
+        setisLoading(true);
+      } else {
+        navigate("/error");
+      }
     }
 
     fetchData();
-  }, []);
-  console.log(userAverage);
+  }, [id]);
 
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {

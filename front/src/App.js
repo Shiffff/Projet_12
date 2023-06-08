@@ -1,9 +1,14 @@
-import Profil from "./Pages/Profil/Profil";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Router from "./Utils/Router";
 
 function App() {
   return (
     <div className="App">
-      <Profil />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/*" element={<Router />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

@@ -3,18 +3,24 @@ import "./piechart.css";
 import Caller from "../../../../../Utils/caller";
 import Formater from "../../../../../Utils/formatData";
 import { PieChart, Pie, ResponsiveContainer } from "recharts";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Piechart = () => {
   const [userScore, setUserScore] = useState("");
   const [isLoading, setisLoading] = useState(false);
+  const navigate = useNavigate();
+  let { id } = useParams();
 
   useEffect(() => {
     async function fetchData() {
-      const data = await Caller.userStats("12");
-      const newData = Formater.scoreChartFormat(data.data);
-
-      setUserScore(newData);
-      setisLoading(true);
+      const data = await Caller.userStats(id);
+      if (typeof data === "object") {
+        const newData = Formater.scoreChartFormat(data.data);
+        setUserScore(newData);
+        setisLoading(true);
+      } else {
+        navigate("/error");
+      }
     }
 
     fetchData();
@@ -26,7 +32,7 @@ const Piechart = () => {
       {isLoading ? (
         <p className="piechartDescription">
           <span className="score">
-            12% <br />
+            {userScore[0].score}%<br />
           </span>
           de votre
           <br /> objectif
@@ -63,10 +69,3 @@ const Piechart = () => {
 };
 
 export default Piechart;
-
-/*            <Pie
-              data={userScore}
-              dataKey="score"
-              outerRadius={105}
-              fill="white"
-            />*/

@@ -12,24 +12,30 @@ import {
 } from "recharts";
 
 import "./barChart.css";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Barchart = () => {
   const [userActivity, setUserActivity] = useState("");
   const [isLoading, setisLoading] = useState(false);
+  const navigate = useNavigate();
+  let { id } = useParams();
 
   useEffect(() => {
     async function fetchData() {
-      const stats = await Caller.userActivity("12");
-      const data = Formater.barChartFormat(stats.data.sessions);
-      setUserActivity(data);
-      console.log(userActivity);
-      setisLoading(true);
+      const stats = await Caller.userActivity(id);
+      if (typeof stats === "object") {
+        const data = Formater.barChartFormat(stats.data.sessions);
+        setUserActivity(data);
+        setisLoading(true);
+      } else {
+        navigate("/error");
+      }
     }
 
     fetchData();
-  }, []);
+  }, [id]);
 
-  const CustomTooltip = ({ active, payload, label }) => {
+  const CustomTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {
       return (
         <div className="custom-tooltip">
@@ -45,9 +51,13 @@ const Barchart = () => {
       <div className="title">
         <p className="dayActivity">Activité quotidienne</p>
         <div className="legendChartBar">
-          <img src="iconChartBlack.svg"></img>
+          <img src="../iconChartBlack.svg" alt="icon"></img>
           <p>Poids (kg)</p>
-          <img className="iconChartRed" src="iconChartRed.svg"></img>
+          <img
+            className="iconChartRed"
+            src="../iconChartRed.svg"
+            alt="icon"
+          ></img>
           <p>Calories brûlées (kCal)</p>
         </div>
       </div>
@@ -62,13 +72,7 @@ const Barchart = () => {
               vertical={false}
             />
 
-            <XAxis
-              dataKey="name"
-              tickMargin={15}
-              tickLine={false}
-
-              //minTickGap={0}
-            />
+            <XAxis dataKey="name" tickMargin={15} tickLine={false} />
             <YAxis
               yAxisId="left"
               orientation="left"

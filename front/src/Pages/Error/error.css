@@ -1,0 +1,12 @@
+.errorPage{
+    margin-top: 170px;
+    margin-left: 170px;
+}
+.errorPage h2{
+    font-size: 50px;
+    text-align: center;
+}
+.errorPage p{
+    text-align: center;
+    font-size: 20px;
+}
