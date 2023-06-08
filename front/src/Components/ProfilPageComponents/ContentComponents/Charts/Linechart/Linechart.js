@@ -2,7 +2,14 @@ import React, { useEffect, useState } from "react";
 import "./linechart.css";
 import Caller from "../../../../../Utils/caller";
 import Formater from "../../../../../Utils/formatData";
-import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from "recharts";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  Tooltip,
+  ResponsiveContainer,
+  linearGradient,
+} from "recharts";
 import { useNavigate, useParams } from "react-router-dom";
 
 const Linechart = () => {
@@ -26,6 +33,13 @@ const Linechart = () => {
     fetchData();
   }, [id]);
 
+  const colorLineGradient = (
+    <linearGradient id="colorLine">
+      <stop offset="0%" stopColor="#FFFFFF" stopOpacity={0.2} />
+      <stop offset="100%" stopColor="#FFFFFF" stopOpacity={1} />
+    </linearGradient>
+  );
+
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
@@ -34,6 +48,7 @@ const Linechart = () => {
         </div>
       );
     }
+    return null;
   };
 
   return (
@@ -43,21 +58,21 @@ const Linechart = () => {
       {isLoading ? (
         <ResponsiveContainer width="100%" height="60%">
           <LineChart data={userAverage}>
+            <defs>{colorLineGradient}</defs>
             <XAxis
               dataKey="day"
               axisLine={false}
               tickLine={false}
               tickMargin={17}
-              tick={{ fill: "#FFFFFF", opacity: "0.5" }}
+              tick={{ fill: "#FFFFFF" }}
             />
-
             <Tooltip content={<CustomTooltip />} />
             <Line
               type="monotone"
               dataKey="sessionLength"
-              stroke="white"
               dot={false}
-              strokeWidth={2}
+              strokeWidth={4}
+              stroke="url(#colorLine)"
             />
           </LineChart>
         </ResponsiveContainer>
